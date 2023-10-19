@@ -10,22 +10,28 @@ let foundeGene;
 
 let allGenes = [];
 
-
-
-// a.	Displaying number of all genes
-
-
-for (let i = 0; i < dna.length - 1; i++) {
+while (startIndex != -1) {
   endIndex = dna.indexOf(endCodon, endIndex + 3);
-  let geneCandidate = dna.slice(startIndex, endIndex + 3);
 
-  if (geneCandidate.length % 3 === 0) {
-    foundeGene = geneCandidate;
-    allGenes.push(geneCandidate)
+  if (endIndex === -1) {
+    startIndex = dna.indexOf(startCodon, startIndex + 3);
+    endIndex = startIndex;
+    continue;
   }
+
+  let geneCandidate = dna.slice(startIndex, endIndex + 3);
+  
+  if (geneCandidate.length % 3 === 0) {
+        foundeGene = geneCandidate;
+        allGenes.push(geneCandidate)
+        
+        dna = dna.slice(endIndex + 3);
+        startIndex = dna.indexOf(startCodon);
+        endIndex = startIndex;
+      } 
 }
 
-console.log(allGenes.length); // 2265
+console.log(allGenes.length); // 63
 
 
 // b.	Displaying length of longest and shortest gene
@@ -34,14 +40,15 @@ let longestGeneLength = 0;
 let shortestGeneLength = Infinity;
 
 allGenes.forEach(gene => {
-    if(gene.length > longestGeneLength){
+    if (gene.length > longestGeneLength){
         longestGeneLength = gene.length;
     };
 
-    if(gene.length < shortestGeneLength){
+    if (gene.length < shortestGeneLength){
         shortestGeneLength = gene.length;
     }
 });
 
-console.log(shortestGeneLength) // 165
-console.log(longestGeneLength) // 4914
+console.log(shortestGeneLength) // 6
+console.log(longestGeneLength) // 435
+
