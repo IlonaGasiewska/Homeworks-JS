@@ -41,6 +41,7 @@ while (newString.length !== 0) {
     }
 }
 
+
 // a. Liczba słów w tekście
 console.log("Liczba słów: " + wordCount); // 69
 
