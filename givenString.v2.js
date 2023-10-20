@@ -2,7 +2,7 @@ let string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ei
 
 let newString = "";
 
-for (let i = 0; i < string.length; i++) { // Poprawiłem warunek pętli, usuwając "-1"
+for (let i = 0; i < string.length; i++) {
     if (string[i] !== "." && string[i] !== ",") {
         newString += string[i];
     }
@@ -10,7 +10,7 @@ for (let i = 0; i < string.length; i++) { // Poprawiłem warunek pętli, usuwaj�
 
 let aCharCounter = 0;
 
-for (let i = 0; i < newString.length; i++) { // Poprawiłem warunek pętli, usuwając "-1"
+for (let i = 0; i < newString.length; i++) { 
     if (newString[i] === "A" || newString[i] === "a") {
         aCharCounter++;
     }
@@ -42,7 +42,7 @@ while (newString.length !== 0) {
 }
 
 // a. Liczba słów w tekście
-console.log("Liczba słów: " + wordCount); // 70
+console.log("Liczba słów: " + wordCount); // 69
 
 // b. Liczba liter "A" w tekście
 console.log("Liczba liter 'A': " + aCharCounter); // 29
