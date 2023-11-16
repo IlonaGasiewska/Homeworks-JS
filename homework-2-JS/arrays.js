@@ -35,28 +35,33 @@ console.log(reveseArray(array)) // [7,  3, 8, 4, 8, 23, 6, 1]
 
 // 4.	Create a function that takes two parameters - array of numbers, and number of attempts. Choose random numbers from the array based on the number of attempts and return the lowest among them.
 
-function findLowestRandomNumber (array, attemptsNumber) {
+function findLowestRandomNumber(array, attemptsNumber) {
+    let randomNumbersOfArray = [];
+    let randomIndex = [];
+    let lowestNumber = Infinity;
 
-    let randomNumbersOfArray =[];
 
-    for(let i = attemptsNumber; i >= 1; i--){
+    if(attemptsNumber > array.length){
+        attemptsNumber = array.length
+    } 
+
+    while (randomNumbersOfArray.length !== attemptsNumber) {
         let randomNumber = Math.floor(Math.random() * array.length);
-        randomNumbersOfArray.push(array[randomNumber]);
-    };
 
-    let lowestNum = Infinity;
+        if (!randomIndex.includes(randomNumber)) {
+            randomNumbersOfArray.push(array[randomNumber]);
+            randomIndex.push(randomNumber);
 
-    for (const number of randomNumbersOfArray) {
-        if (number < lowestNum) {
-            lowestNum = number;
-        };
-    };
+            if (lowestNumber > array[randomNumber]) {
+                lowestNumber = array[randomNumber];
+            }
+        }
+    }
+    
+    return lowestNumber;
+}
+console.log(findLowestRandomNumber(array, 18));
 
-    console.log(randomNumbersOfArray)
-    return lowestNum;
-};
-
-console.log(findLowestRandomNumber(array, 5));
 
 // 5.	Create a function that takes in an array and returns it in random order
 

@@ -12,65 +12,42 @@ console.log(showDaysTillFriday());
   
 // 2.	Create two functions:
 // a.	First that takes in a string and shift number, and returns encrypted string using Caesar Cipher
+// b.	Second that takes in encrypted string and shift number, and returns decrypted message using Caesar Cipher
+
+let text = "This is a string to cipher.";
 
 let alphabet = Array.from("abcdefghijklmnopqrstuvwxyz");
 const alphabetLength = alphabet.length;
 
-let text = "This is a string to cipher.";
-
-function caesarCipher(text, shiftNum) {  
-  let cipherText = "";
+function caesarCipher(text, shiftNum, mode) {
+  let resultText = "";
 
   for (let char of text) {
     if (char.match(/[a-z]/i)) {
-      let index = alphabet.indexOf(char.toLowerCase()); 
-      let newIndex = (index + shiftNum + alphabetLength) % alphabetLength;
+      let index = alphabet.indexOf(char.toLowerCase());
+      let newIndex;
+
+      if (mode === "encrypt") {
+        newIndex = (index + shiftNum + alphabetLength) % alphabetLength;
+      } else if (mode === "decrypt") {
+        newIndex = (index - shiftNum + alphabetLength) % alphabetLength;
+      }
 
       if (char === char.toUpperCase()) {
-        cipherText += alphabet[newIndex].toUpperCase();
+        resultText += alphabet[newIndex].toUpperCase();
       } else {
-        cipherText += alphabet[newIndex];
-      };
-    } else {
-      cipherText += char;
-    };
-  };
-
-  return cipherText;
-};
-
-console.log(caesarCipher(text, 20));
-
-
-
-// b.	Second that takes in encrypted string and shift number, and returns decrypted message using Caesar Cipher
-
-let textToDecrypted = "Nbcm cm u mnlcha ni xymwlsjnyx.";
-
-function caesarDecrypted (text, shiftNum) {
-  let decryptedText = "";
-  
-    for (let char of text) {
-      if (char.match(/[a-z]/i)) {
-        let index = alphabet.indexOf(char.toLowerCase());
-        let newIndex = (index - shiftNum + alphabetLength) % alphabetLength;
-
-        if(char === char.toUpperCase()){
-          decryptedText += alphabet[newIndex].toLocaleUpperCase();  
-        } else {
-          decryptedText += alphabet[newIndex];
-        };
-
-      } else {
-        decryptedText += char;
+        resultText += alphabet[newIndex];
       }
-    };
+    } else {
+      resultText += char;
+    }
+  }
 
-  return decryptedText;
+  return resultText;
+}
 
-};
 
-console.log(caesarDecrypted(textToDecrypted, 20));
+console.log(caesarCipher(text, 20, "encrypt"));
 
   
 // 3.	Create a function that takes in a n (number) as a parameter and returns first n Fibonacci numbers - use recursion
@@ -83,7 +60,17 @@ function getFibonacci (n){
   };
 };
 
-console.log(getFibonacci(10));
+function fibonacciSequence(n) {
+  const sequence = [];
+  
+  for (let i = 0; i <= n; i++) {
+    sequence.push(getFibonacci(i));
+  }
+
+  return sequence;
+}
+
+console.log(fibonacciSequence(10));
 
 // Fibonacci in otherway
 
@@ -94,7 +81,7 @@ function fibonacci (num) {
     i <= 1  &&   i >= 0 ? fibonacciNumbers.push(i) : fibonacciNumbers.push(fibonacciNumbers[fibonacciNumbers.length - 1] + fibonacciNumbers[fibonacciNumbers.length - 2]);
   };
 
-  return fibonacciNumbers[fibonacciNumbers.length - 1];
+  return fibonacciNumbers;
 };
 
 console.log(fibonacci(10));

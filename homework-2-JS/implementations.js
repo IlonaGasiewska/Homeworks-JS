@@ -33,6 +33,29 @@ binarySearch(numArry, 5);
 // 2.	Implement selection sort
 
 function selectionSort(array) {
+    let n = array.length;
+
+    for (let i = 0; i < n - 1; i++) {
+        let minIndex = i;
+
+        for (let j = i + 1; j < n; j++) {
+            if (array[j] < array[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        let temp = array[i];
+        array[i] = array[minIndex];
+        array[minIndex] = temp;
+    }
+
+    return array;
+}
+
+console.log(selectionSort(numArry))
+
+// Bubble sort
+function bubbleSort(array) {
     for (let i = 0; i < array.length; i++) {
       for (let j = i + 1; j < array.length; j++) {
         if (array[i] > array[j]) {
@@ -45,7 +68,7 @@ function selectionSort(array) {
     return array;
   }
 
-console.log(selectionSort(numArry))
+console.log(bubbleSort(numArry))
 
 // 3.	Implement merge sort
 
