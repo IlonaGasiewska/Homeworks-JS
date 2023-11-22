@@ -27,17 +27,17 @@ console.log(sumStarships(starships).length)/22;
 
 function findStarship(data, maxPrice) {
     let theFasterStarshipInPrice = [];
-    let heightSpeed = 0;
+    let highestSpeed = 0;
 
     data
         .filter(starship => parseInt(starship.cost_in_credits) <= maxPrice)
         .forEach(starship => {
             const currentShipSpeed = parseInt(starship.max_atmosphering_speed);
 
-            if (currentShipSpeed > heightSpeed) {
-                heightSpeed = currentShipSpeed;
+            if (currentShipSpeed > highestSpeed) {
+                highestSpeed = currentShipSpeed;
                 theFasterStarshipInPrice = [starship.name];
-            } else if (currentShipSpeed === heightSpeed) {
+            } else if (currentShipSpeed === highestSpeed) {
                 theFasterStarshipInPrice.push(starship.name);
             }
         });
