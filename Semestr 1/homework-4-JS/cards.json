@@ -1,0 +1,262 @@
+[
+    {
+        "sign" : "A",
+        "color": "♦️",
+        "value": 14
+    },
+    {
+        "sign" : "A",
+        "color": "♥️",
+        "value": 14
+    },
+    {
+        "sign" : "A",
+        "color": "♣️",
+        "value": 14
+    },
+    {
+        "sign" : "A",
+        "color": "♠️",
+        "value": 14
+    },
+    {
+        "sign" : "2",
+        "color": "♦️",
+        "value": 2
+    },
+    {
+        "sign" : "2",
+        "color": "♥️",
+        "value": 2
+    },
+    {
+        "sign" : "2",
+        "color": "♣️",
+        "value": 2
+    },
+    {
+        "sign" : "2",
+        "color": "♠️",
+        "value": 2
+    },  
+    {
+        "sign" : "3",
+        "color": "♦️",
+        "value": 3
+    },
+    {
+        "sign" : "3",
+        "color": "♥️",
+        "value": 3
+    },
+    {
+        "sign" : "3",
+        "color": "♣️",
+        "value": 3
+    },
+    {
+        "sign" : "3",
+        "color": "♠️",
+        "value": 3
+    },  
+    {
+        "sign" : "4",
+        "color": "♦️",
+        "value": 4
+    },
+    {
+        "sign" : "4",
+        "color": "♥️",
+        "value": 4
+    },
+    {
+        "sign" : "4",
+        "color": "♣️",
+        "value": 4
+    },
+    {
+        "sign" : "4",
+        "color": "♠️",
+        "value": 4
+    },  
+    {
+        "sign" : "5",
+        "color": "♦️",
+        "value": 5
+    },
+    {
+        "sign" : "5",
+        "color": "♥️",
+        "value": 5
+    },
+    {
+        "sign" : "5",
+        "color": "♣️",
+        "value": 5
+    },
+    {
+        "sign" : "5",
+        "color": "♠️",
+        "value": 5
+    },  
+    {
+        "sign" :" 6",
+        "color": "♦️",
+        "value": 6
+    },
+    {
+        "sign" : "6",
+        "color": "♥️",
+        "value": 6
+    },
+    {
+        "sign" : "6",
+        "color": "♣️",
+        "value": 6
+    },
+    {
+        "sign" : "6",
+        "color": "♠️",
+        "value": 6
+    },  
+    {
+        "sign" : "7",
+        "color": "♦️",
+        "value": 7
+    },
+    {
+        "sign" : "7",
+        "color": "♥️",
+        "value": 7
+    },
+    {
+        "sign" : "7",
+        "color": "♣️",
+        "value": 7
+    },
+    {
+        "sign" : "7",
+        "color": "♠️",
+        "value": 7
+    },  
+    {
+        "sign" : "8",
+        "color": "♦️",
+        "value": 8
+    },
+    {
+        "sign" : "8",
+        "color": "♥️",
+        "value": 8
+    },
+    {
+        "sign" : "8",
+        "color": "♣️",
+        "value": 8
+    },
+    {
+        "sign" : "8",
+        "color": "♠️",
+        "value": 8
+    },  {
+        "sign" : "9",
+        "color": "♦️",
+        "value": 9
+    },
+    {
+        "sign" : "9",
+        "color": "♥️",
+        "value": 9
+    },
+    {
+        "sign" : "9",
+        "color": "♣️",
+        "value": 9
+    },
+    {
+        "sign" : "9",
+        "color": "♠️",
+        "value": 9
+    },  
+    {
+        "sign" : "10",
+        "color": "♦️",
+        "value": 10
+    },
+    {
+        "sign" : "10",
+        "color": "♥️",
+        "value": 10
+    },
+    {
+        "sign" : "10",
+        "color": "♣️",
+        "value": 10
+    },
+    {
+        "sign" : "10",
+        "color": "♠️",
+        "value": 10
+    },
+    {
+        "sign" : "J",
+        "color": "♦️",
+        "value": 11
+    },
+    {
+        "sign" : "J",
+        "color": "♥️",
+        "value": 11
+    },
+    {
+        "sign" : "J",
+        "color": "♣️",
+        "value": 11
+    },
+    {
+        "sign" : "J",
+        "color": "♠️",
+        "value": 11
+    },
+    {
+        "sign" : "D",
+        "color": "♦️",
+        "value": 12
+    },
+    {
+        "sign" : "D",
+        "color": "♥️",
+        "value": 12
+    },
+    {
+        "sign" : "D",
+        "color": "♣️",
+        "value": 12
+    },
+    {
+        "sign" : "D",
+        "color": "♠️",
+        "value": 12
+    },
+    {
+        "sign" : "K",
+        "color": "♦️",
+        "value": 13
+    },
+    {
+        "sign" : "K",
+        "color": "♥️",
+        "value": 13
+    },
+    {
+        "sign" : "K",
+        "color": "♣️",
+        "value": 13
+    },
+    {
+        "sign" : "K",
+        "color": "♠️",
+        "value": 13
+    }
+]
+
