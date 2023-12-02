@@ -3,13 +3,7 @@
 const cards = require('./cards.json');
 
 
-const pokerSet = [
-    { sign: '2', color: '♥️', value: 2 },
-    { sign: '3', color: '♥️', value: 3 },
-    { sign: '4', color: '♥️', value: 4 },
-    { sign: 'A', color: '♦️', value: 14 },
-    { sign: '5', color: '♥️', value: 5 }
-];
+const pokerSet = [];
 
 function getPokerSet (){
 
@@ -193,15 +187,17 @@ function threeOfKind () {
 
 
 function twoPair () {
+    let pokerSetCopy = JSON.parse(JSON.stringify(pokerSet));
 
     let pairCounter = 0;
 
-    for (const e of pokerSet) {
+    for (const e of pokerSetCopy) {
         let currentCardValue = e.value;
 
-        const cardsCounter = pokerSet.reduce((counter, card) => {
+        const cardsCounter = pokerSetCopy.reduce((counter, card) => {
             if (card.value === currentCardValue) {
                 counter += 1;
+                pokerSetCopy = pokerSetCopy.filter(item => item.value != currentCardValue)
             };
 
             return counter;
