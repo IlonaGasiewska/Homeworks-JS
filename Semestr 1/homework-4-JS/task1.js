@@ -1,7 +1,7 @@
 // Create a function that returns a Promise that has a 50% chance of resolving, and 50% chance of rejecting, on resolve it should return “Now I work” and on reject “Now I don’t’.
 
 function shouldNotReject() {
-    let randomBoolean = Math.round(Math.random()) * 1;
+    const randomBoolean = Math.round(Math.random());
     return !!randomBoolean;
 }
 

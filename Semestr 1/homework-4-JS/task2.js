@@ -2,22 +2,22 @@
 // documentation can be found here: 
 // https://rickandmortyapi.com/documentation/#rest
 
-let url = "https://rickandmortyapi.com/api"
-
-let characters
+const url = "https://rickandmortyapi.com/api/episode";
 
 fetch(url)
-.then(res => res.json())
-.then(data =>  fetch(data.characters))
-.then(res => res.json())
-.then(data => showCharacters(data))
+  .then((res) => res.json())
+  .then((data) => showCharacters(data));
 
+function showCharacters(data) {
+    const episode7 = data.results.find(e => e.id == 7);
 
-function showCharacters(characters){
-    characters = characters.results
+    const characterPromises = episode7.characters.map((character) =>
+        fetch(character).then((res) => res.json())
+    );
 
-    charactersFrom7Episode = characters.filter(character => character.episode.includes('https://rickandmortyapi.com/api/episode/7')).map(character => character.name);
-    
-    console.log(charactersFrom7Episode)
-}
-
+    Promise.all(characterPromises)
+        .then((characters) => {
+        const characterNames = characters.map((character) => character.name);
+        console.log(characterNames);
+        });
+};
