@@ -26,51 +26,34 @@ console.log(sumStarships(starships).length);
 // 2. Find the fastest starship you can afford having 8500000 credits
 
 function findStarship(data, maxPrice) {
-    let theFasterStarshipInPrice = [];
-    let highestSpeed = 0;
 
+    const sortedStarshipsInPrice =
     data
         .filter(starship => parseInt(starship.cost_in_credits) <= maxPrice)
-        .forEach(starship => {
-            const currentShipSpeed = parseInt(starship.max_atmosphering_speed);
+        .sort((a,b) => a.max_atmosphering_speed - b.max_atmosphering_speed)
 
-            if (currentShipSpeed > highestSpeed) {
-                highestSpeed = currentShipSpeed;
-                theFasterStarshipInPrice = [starship.name];
-            } else if (currentShipSpeed === highestSpeed) {
-                theFasterStarshipInPrice.push(starship.name);
-            }
-        });
+    const theFasterStarshipInPrice = sortedStarshipsInPrice[sortedStarshipsInPrice.length - 1].name;
 
     return theFasterStarshipInPrice;
 }
 
-console.log(findStarship(starships, 8500000));
+console.log(findStarship(starships, 8500000)); // Theta-class T-2c shuttle
 
 
 // 3. Find the planet’s name with the lowest difference between the rotation period and orbital period
 
 function findPlanet (data) {
-    let planetNameWithtTheLowestDiff;
-    let currentLowestDiff = Infinity;
     
-    data.filter(planet =>{if (planet.rotation_period != "unknown" || planet.orbital_period != "unknown"){
-        return planet;
-    }
-}).map((planet =>{
-        let currentPlanetDiff = parseInt(planet.orbital_period) - parseInt(planet.rotation_period);
-        
-   
-
-        if (currentPlanetDiff < currentLowestDiff) {
-            if(planet.name != "unknown"){
-                planetNameWithtTheLowestDiff = planet.name;
-                currentLowestDiff = currentPlanetDiff;
-            };
-           
+    const sortedPlanets = data
+    .filter(planet => {
+            if (planet.name != "unknown"){
+            return planet;
         };
-      
-    }));
+    })
+    .sort((a,b) => (a.orbital_period - a.rotation_period)-(b.orbital_period - b.rotation_period));
+   
+    const planetNameWithtTheLowestDiff = sortedPlanets[0].name;
+
     return planetNameWithtTheLowestDiff;
 };
 
@@ -79,20 +62,14 @@ console.log(findPlanet(planets)); // Megeeto
 
 // 4. Map all starships with crew <= 4 that were created between 10 Dec 2014 and 15 Dec 2014
 
-function findStarshipWith4Crew (data){
-
-    const validDates = ["2014-12-10", "2014-12-11", "2014-12-12", "2014-12-13", "2014-12-14", "2014-12-15"];
+function findStarshipWith4Crew (data, startDate, endDate){
 
     return data.reduce(((starshipsArray, starship ) => {
 
         if(parseInt(starship.crew) <= 4){
+            const createdDate = new Date (starship.created.slice(0,10));
 
-            for(i=0 ; i<validDates.length; i++){
-                if(starship.created.includes(validDates[i])){
-                    starshipsArray.push(starship.name)
-                };
-            };
-
+            createdDate >= new Date(startDate) && createdDate <= new Date(endDate) ? starshipsArray.push(starship.name): null;
         };
 
         return starshipsArray
@@ -100,7 +77,7 @@ function findStarshipWith4Crew (data){
 
 };
 
-console.log(findStarshipWith4Crew(starships)); // ['Millennium Falcon', 'Y-wing', 'X-wing', 'TIE Advanced x1', 'Slave 1']
+console.log(findStarshipWith4Crew(starships, "2014-12-10", "2014-12-15")); // ['Millennium Falcon', 'Y-wing', 'X-wing', 'TIE Advanced x1', 'Slave 1']
 
 // 5. Create an array of people’s names from episodes 1 and 5 sorted by the diameter of the origin planet low to high
 
