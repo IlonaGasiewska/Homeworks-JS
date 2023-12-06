@@ -6,12 +6,12 @@ const url = "https://rickandmortyapi.com/api/episode";
 
 fetch(url)
   .then((res) => res.json())
-  .then((data) => showCharacters(data));
+  .then((data) => showCharacters(data, 7));
 
-function showCharacters(data) {
-    const episode7 = data.results.find(e => e.id == 7);
+function showCharacters(data, episodeNumber) {
+    const episode = data.results.find(e => e.id == episodeNumber);
 
-    const characterPromises = episode7.characters.map((character) =>
+    const characterPromises = episode.characters.map((character) =>
         fetch(character).then((res) => res.json())
     );
 
