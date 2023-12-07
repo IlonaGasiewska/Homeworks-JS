@@ -3,13 +3,7 @@
 const cards = require('./cards.json');
 
 
-const pokerSet = [
-    { sign: '2', color: '♥️', value: 2 },
-    { sign: '3', color: '♥️', value: 3 },
-    { sign: '4', color: '♥️', value: 4 },
-    { sign: '5', color: '♥️', value: 5 },
-    { sign: '14', color: '♥️', value: 14 }
-  ];
+const pokerSet = [];
 
 function getPokerSet (){
 
