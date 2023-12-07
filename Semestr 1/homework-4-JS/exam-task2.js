@@ -3,7 +3,13 @@
 const cards = require('./cards.json');
 
 
-const pokerSet = [];
+const pokerSet = [
+    { sign: '2', color: '♥️', value: 2 },
+    { sign: '3', color: '♥️', value: 3 },
+    { sign: '4', color: '♥️', value: 4 },
+    { sign: '5', color: '♥️', value: 5 },
+    { sign: '14', color: '♥️', value: 14 }
+  ];
 
 function getPokerSet (){
 
@@ -23,38 +29,43 @@ console.log(pokerSet);
 
 
 function checkPokerSet(){
-    if(royalFlush()){
-        return "Royal flush";
-    } else if (straightFlush()){
-        return "Straight flush";
-    } else if (quads()) {
-        return "Quads";
-    } else if (fullHouse()) {
-        return "Full house";
-    } else if (flush()){
-        return "Flush";
-    } else if(straight()){
-        return"Straight";
-    }else if(threeOfKind()){
-        return "Three of kind";
-    } else if(twoPair()){
-        return "Two pair"
-    } else if(onePair()) {
-        return "One pair"
-    }else {
-        return `"Najwyższa karta: ${pokerSet[pokerSet.length - 1].sign + pokerSet[pokerSet.length - 1].color}`
-    };
+
+    if (colorCheck()){
+        if(royalFlush()){
+            return "Royal flush";
+        } else if (straightAndStraightFlush()){
+            return "Straight flush";
+        } else {
+            return "Flush";
+        }
+    } else {
+        if (quads()) {
+            return "Quads";
+        } else if (fullHouse()) {
+            return "Full house";
+        }  else if(straightAndStraightFlush()){
+            return"Straight";
+        }else if(threeOfKind()){
+            return "Three of kind";
+        } else if(twoPair()){
+            return "Two pair"
+        } else if(onePair()) {
+            return "One pair"
+        }else {
+            return `"Najwyższa karta: ${pokerSet[pokerSet.length - 1].sign + pokerSet[pokerSet.length - 1].color}`
+        };
+    }
 };
 
 /// CHECK FUNCTIONS
 
-const currentCardColor = pokerSet[0].color;
+
 
 function royalFlush() {
     let royalFlushSet = ["10", "J", "D", "K", "A"];
 
     for (const card of pokerSet) {
-        if (royalFlushSet.includes(card.sign) && card.color === currentCardColor) {
+        if (royalFlushSet.includes(card.sign)) {
             royalFlushSet = royalFlushSet.filter(currentCard => currentCard !== card.sign);
         } else {
             return false;
@@ -63,30 +74,6 @@ function royalFlush() {
 
     return true;
 }
-
-
-function straightFlush () {
-    
-    const pokerSetCopy = JSON.parse(JSON.stringify(pokerSet));
-    const firstCard = pokerSetCopy[0];
-    const lastCard = pokerSetCopy[pokerSetCopy.length - 1];
-
-    for( let i = 0; i < 4 ; i ++){
-
-        if (firstCard.value === 2 && lastCard.value === 14) {
-            lastCard.value = 1;
-            pokerSetCopy.unshift(lastCard);
-            pokerSetCopy.splice(5);
-        };
-        
-        if(pokerSetCopy[i].value != pokerSetCopy[i + 1].value - 1 || pokerSetCopy[i].color != currentCardColor){
-            return false;
-        };
-    };
-
-    return true;
-};
-
 
 function quads() {
     for (const e of pokerSet) {
@@ -129,34 +116,23 @@ function fullHouse () {
 };
 
 
-function flush () {
-
-    for (const card of pokerSet) {
-        if (card.color != currentCardColor){
-            return false;
-        };
-    };
-
-    return true;
-};
-
-
-function straight () {
+function straightAndStraightFlush () {
     const pokerSetCopy = JSON.parse(JSON.stringify(pokerSet));
     const firstCard = pokerSetCopy[0];
-    const lastCard = pokerSetCopy[pokerSetCopy.length - 1];;
+    const lastCard = pokerSetCopy[pokerSetCopy.length - 1];
+
+    if (firstCard.value === 2 && lastCard.value === 14) {
+        lastCard.value = 1;
+        pokerSetCopy.unshift(lastCard);
+        pokerSetCopy.splice(5);
+    };
 
     for( let i = 0; i < 4 ; i ++){
-
-        if (firstCard.value === 2 && lastCard.value === 14) {
-            lastCard.value = 1;
-            pokerSetCopy.unshift(lastCard);
-            pokerSetCopy.splice(5);
-        };
         
         if(pokerSetCopy[i].value != pokerSetCopy[i + 1].value - 1){
             return false;
         };
+        
     };
 
     return true;
@@ -243,3 +219,15 @@ function onePair () {
 console.log(checkPokerSet())
 
  
+function colorCheck () {
+
+    const currentCardColor = pokerSet[0].color;
+    
+    for (const card of pokerSet) {
+        if (card.color != currentCardColor){
+            return false;
+        };
+    };
+
+    return true;
+};
